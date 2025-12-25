@@ -77,6 +77,6 @@ To add support for additional languages, edit the `langs` array:
 ```javascript
 const highlighter = await createHighlighter({
   themes: ['github-dark'],
-  langs: ['javascript', 'typescript', 'css', 'html', 'svelte', 'bash', 'json', 'yaml', 'markdown']
+  langs: ['javascript', 'typescript', 'python', 'rust', /* add more */]
 });
 ```

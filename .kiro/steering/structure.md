@@ -4,19 +4,24 @@
 src/
 ├── app.css          # Global styles, CSS variables, typography
 ├── app.html         # HTML template
+├── meta.yaml        # Site configuration (title, logo, github, etc.)
 ├── docs/            # Markdown documentation content
 │   └── *.md         # Doc pages (auto-routed to /docs/[slug])
 ├── lib/
 │   ├── assets/      # Static assets (favicon, images)
 │   ├── components/  # Svelte components
-│   │   ├── Header.svelte
-│   │   └── Sidebar.svelte
+│   │   ├── Sidebar.svelte
+│   │   ├── SearchBox.svelte
+│   │   ├── ThemeToggle.svelte
+│   │   └── NavLink.svelte
 │   ├── utils/
-│   │   └── docs.ts  # Doc listing/sorting utilities
+│   │   ├── docs.ts  # Doc listing/sorting utilities
+│   │   └── config.ts # Site config loader
+│   ├── types.ts     # Shared TypeScript types
 │   └── index.ts     # $lib exports
 └── routes/
-    ├── +layout.svelte   # App shell (header, sidebar, main)
-    ├── +layout.ts       # Prerender config, loads doc list
+    ├── +layout.svelte   # App shell (sidebar, main content)
+    ├── +layout.ts       # Prerender config, loads docs & config
     ├── +page.svelte     # Homepage
     └── docs/[slug]/     # Dynamic doc pages
         ├── +page.svelte
@@ -41,16 +46,26 @@ group: Category        # Optional grouping
 ---
 ```
 
+### Site Configuration
+
+Edit `src/meta.yaml` to configure site metadata:
+
+```yaml
+title: My Documentation
+description: Site description
+logo: MyProject
+github: https://github.com/your-repo
+```
+
 ### Components
 
 - Use `$props()` for component props (Svelte 5 runes)
 - Use `$derived()` for reactive computations
-- Import from `$lib/` alias for lib folder access
+- Import from `$lib` for shared modules
 - Import from `$app/` for SvelteKit utilities
 
 ### Styling
 
-- UnoCSS utility classes in templates
 - CSS custom properties in `app.css` for theming
 - Component-scoped `<style>` blocks for component-specific styles
-- Dark mode via `prefers-color-scheme` media query
+- Dark mode via `data-theme` attribute (toggle in sidebar)

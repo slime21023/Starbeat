@@ -10,6 +10,9 @@ Generate fast, clean documentation sites from Markdown files with zero configura
 
 - Markdown-first content authoring with mdsvex
 - File-based routing (docs in `src/docs/` auto-generate routes)
-- Dark mode support via CSS custom properties
+- Dark/light mode toggle with localStorage persistence
 - Static site generation for deployment anywhere
 - Sidebar navigation auto-generated from doc metadata
+- Fuzzy search across documentation
+- Syntax highlighting with Shiki
+- YAML-based site configuration

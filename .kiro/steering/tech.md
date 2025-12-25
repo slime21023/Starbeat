@@ -10,14 +10,9 @@
 ## Key Libraries
 
 - mdsvex: Markdown preprocessing with Svelte component support
-- UnoCSS: Atomic CSS with `@unocss/svelte-scoped` integration
-- Shiki: Syntax highlighting (configured but currently commented out)
-
-## UnoCSS Presets
-
-- `presetWind3`: Tailwind-compatible utilities
-- `presetIcons`: Icon support
-- `presetTypography`: Prose styling
+- Shiki: Syntax highlighting (github-dark theme)
+- Fuse.js: Fuzzy search for documentation
+- js-yaml: YAML parsing for site configuration
 
 ## TypeScript
 

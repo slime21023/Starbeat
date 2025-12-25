@@ -1,36 +1,54 @@
-export interface DocPost {
-	slug: string;
-	metadata: {
-		title?: string;
-		order?: number;
-		group?: string;
-		[key: string]: any;
-	};
-	component: any;
-}
+import type { DocPost, DocGroup, MarkdownModule } from '$lib/types';
 
-export interface DocGroup {
-	name: string;
-	docs: DocPost[];
-}
+// Re-export types for convenience
+export type { DocPost, DocGroup, MarkdownModule };
 
+/**
+ * List all documentation posts from src/docs/
+ */
 export const listDocs = async (): Promise<DocPost[]> => {
-	const modules = import.meta.glob('/src/docs/*.md');
+	const modules = import.meta.glob<MarkdownModule>('/src/docs/*.md');
 
 	const docs = await Promise.all(
 		Object.entries(modules).map(async ([path, resolver]) => {
 			const slug = path.split('/').pop()?.replace('.md', '') ?? '';
-			const resolution = (await resolver()) as any;
+			const module = await resolver();
 
 			return {
 				slug,
-				metadata: resolution.metadata ?? {},
-				component: resolution.default
+				metadata: module.metadata ?? {},
+				component: module.default
 			};
 		})
 	);
 
-	// Sort by order, then by title
+	return sortDocs(docs);
+};
+
+/**
+ * Load a single doc by slug
+ */
+export const loadDocBySlug = async (slug: string): Promise<DocPost | null> => {
+	const modules = import.meta.glob<MarkdownModule>('/src/docs/*.md');
+
+	for (const [path, resolver] of Object.entries(modules)) {
+		if (path.endsWith(`/${slug}.md`)) {
+			const module = await resolver();
+			return {
+				slug,
+				metadata: module.metadata ?? {},
+				component: module.default
+			};
+		}
+	}
+
+	return null;
+};
+
+/**
+ * Sort docs by order, then by title
+ */
+const sortDocs = (docs: DocPost[]): DocPost[] => {
 	return docs.sort((a, b) => {
 		const orderA = a.metadata.order ?? Number.MAX_SAFE_INTEGER;
 		const orderB = b.metadata.order ?? Number.MAX_SAFE_INTEGER;
@@ -55,7 +73,6 @@ export const groupDocs = (docs: DocPost[]): DocGroup[] => {
 	const groupMap = new Map<string, DocPost[]>();
 	const ungrouped: DocPost[] = [];
 
-	// Separate docs into groups
 	for (const doc of docs) {
 		const groupName = doc.metadata.group;
 		if (groupName) {
@@ -68,7 +85,6 @@ export const groupDocs = (docs: DocPost[]): DocGroup[] => {
 		}
 	}
 
-	// Convert to array and sort groups by their minimum order
 	const groups: DocGroup[] = Array.from(groupMap.entries()).map(([name, groupDocs]) => ({
 		name,
 		docs: groupDocs
@@ -81,7 +97,6 @@ export const groupDocs = (docs: DocPost[]): DocGroup[] => {
 		return minOrderA - minOrderB;
 	});
 
-	// Add ungrouped docs at the end (if any)
 	if (ungrouped.length > 0) {
 		groups.push({ name: '', docs: ungrouped });
 	}
