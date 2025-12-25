@@ -2,6 +2,22 @@ import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex, escapeSvelte } from 'mdsvex';
 import { createHighlighter } from 'shiki';
+import { readFileSync } from 'node:fs';
+import yaml from 'js-yaml';
+
+// Load base path from meta.yaml only in production
+let basePath = '';
+const isProduction = process.env.NODE_ENV === 'production';
+
+if (isProduction) {
+	try {
+		const metaContent = readFileSync('src/meta.yaml', 'utf-8');
+		const meta = yaml.load(metaContent);
+		basePath = meta?.base || '';
+	} catch (e) {
+		basePath = '';
+	}
+}
 
 const highlighter = await createHighlighter({
 	themes: ['github-dark'],
@@ -35,6 +51,7 @@ const config = {
 			fallback: '404.html'
 		}),
 		paths: {
+			base: basePath,
 			relative: false
 		}
 	}

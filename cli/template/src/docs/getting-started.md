@@ -35,3 +35,13 @@ bun run build
 ```
 
 Static files will be output to the `build/` directory.
+
+## Deploying to GitHub Pages
+
+1. Set the `base` path in `src/meta.yaml`:
+
+```yaml
+base: /your-repo-name
+```
+
+2. Build and deploy to GitHub Pages.

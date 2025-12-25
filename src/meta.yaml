@@ -6,6 +6,9 @@ title: Starbeat Docs
 description: A minimalist documentation site generator built with Bun and Svelte
 logo: Starbeat
 
+# Base path for GitHub Pages (e.g., /repo-name)
+base: /Starbeat
+
 # Links (optional)
 github: https://github.com/slime21023/Starbeat
 

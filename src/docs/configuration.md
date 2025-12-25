@@ -27,6 +27,7 @@ github: https://github.com/your-repo
 | `title` | Browser tab title | Starbeat Docs |
 | `description` | SEO meta description | — |
 | `logo` | Sidebar logo text | Starbeat |
+| `base` | Base path for deployment (e.g., `/repo-name`) | — |
 | `github` | GitHub link (shown in sidebar footer) | — |
 
 ## Full Example

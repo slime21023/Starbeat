@@ -6,6 +6,10 @@ title: My Documentation
 description: Documentation for my project
 logo: MyDocs
 
+# Base path for GitHub Pages deployment (e.g., /repo-name)
+# Leave empty for root domain deployment
+# base: /my-repo
+
 # Links (optional)
 github: https://github.com
 
