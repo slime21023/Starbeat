@@ -42,13 +42,15 @@ const mdsvexOptions = {
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	// Consult https://svelte.dev/docs/kit/integrations
+	// for more information about preprocessors
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 
 	extensions: ['.svelte', '.md', '.svx'],
 
 	kit: {
 		adapter: adapter({
-			fallback: '404.html'
+			fallback: 'index.html'
 		}),
 		paths: {
 			base: basePath,
