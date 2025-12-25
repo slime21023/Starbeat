@@ -1,31 +1,57 @@
 ---
 title: Configuration
-order: 10
-group: Advanced
+order: 3
+group: Customization
 ---
 
-Starbeat is highly configurable. You can customize the look and feel, as well as the behavior of the site.
+Starbeat is configured through the `src/meta.yaml` file — no code changes required.
 
-## Frontmatter Options
+## Basic Configuration
+
+Edit the `src/meta.yaml` file:
+
+```yaml
+# Site Configuration
+title: My Documentation
+description: Documentation for my project
+logo: MyProject
+
+# Links (optional)
+github: https://github.com/your-repo
+```
+
+## Configuration Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `title` | Page title in sidebar | filename |
-| `order` | Sort order (lower = first) | 999 |
-| `group` | Group name for sidebar | none |
+| `title` | Browser tab title | Starbeat Docs |
+| `description` | SEO meta description | — |
+| `logo` | Sidebar logo text | Starbeat |
+| `github` | GitHub link (shown in sidebar footer) | — |
 
-## Example
+## Full Example
 
 ```yaml
----
-title: My Page
-order: 5
-group: Tutorials
----
+# Site Configuration
+# Edit this file to customize your documentation site
+
+# Basic Info
+title: Starbeat Docs
+description: A minimalist documentation site generator built with Bun and Svelte
+logo: Starbeat
+
+# Links (optional)
+github: https://github.com/example/starbeat
+
+# SEO (optional)
+# og_image: /og-image.png
+# twitter_handle: "@starbeat"
 ```
 
-### Grouping Logic
+## Applying Changes
 
-- Groups are sorted by the minimum `order` value of their docs
-- Docs within a group are sorted by their `order` value
-- Docs without a `group` appear at the end
+After modifying `meta.yaml`, the development server will automatically reload. If changes don't take effect, restart the dev server:
+
+```bash
+bun run dev
+```

@@ -3,26 +3,26 @@
 
 	type Theme = 'light' | 'dark';
 
-	let theme = $state<Theme>('dark');
+	let theme = $state<Theme>(getInitialTheme());
 
-	// Initialize theme from localStorage
-	if (browser) {
-		const stored = localStorage.getItem('theme') as Theme | null;
-		theme = stored || 'dark';
-		applyTheme(theme);
+	function getInitialTheme(): Theme {
+		if (browser) {
+			const stored = localStorage.getItem('theme') as Theme | null;
+			return stored || 'dark';
+		}
+		return 'dark';
 	}
 
-	function applyTheme(t: Theme) {
-		if (!browser) return;
-		
-		const root = document.documentElement;
-		root.setAttribute('data-theme', t);
-		localStorage.setItem('theme', t);
-	}
+	// Apply theme on mount and when theme changes
+	$effect(() => {
+		if (browser) {
+			document.documentElement.setAttribute('data-theme', theme);
+			localStorage.setItem('theme', theme);
+		}
+	});
 
 	function toggleTheme() {
 		theme = theme === 'dark' ? 'light' : 'dark';
-		applyTheme(theme);
 	}
 
 	const icons: Record<Theme, string> = {
