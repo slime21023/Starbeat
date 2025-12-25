@@ -1,11 +1,9 @@
 {
   "name": "create-starbeat",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Create a new Starbeat documentation site",
   "type": "module",
-  "bin": {
-    "create-starbeat": "./bin/index.js"
-  },
+  "bin": "./bin/index.js",
   "files": [
     "bin",
     "template"
@@ -17,12 +15,17 @@
     "documentation",
     "svelte",
     "sveltekit",
-    "markdown"
+    "markdown",
+    "static-site"
   ],
-  "author": "",
+  "author": "slime21023",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/user/starbeat"
+    "url": "git+https://github.com/slime21023/Starbeat.git"
+  },
+  "homepage": "https://github.com/slime21023/Starbeat#readme",
+  "bugs": {
+    "url": "https://github.com/slime21023/Starbeat/issues"
   }
 }
