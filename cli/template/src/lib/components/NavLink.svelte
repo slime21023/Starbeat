@@ -1,14 +1,15 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import type { DocPost } from '$lib/types';
 
 	let { doc }: { doc: DocPost } = $props();
 
-	let isActive = $derived(page.url.pathname === `/docs/${doc.slug}`);
+	let isActive = $derived(page.url.pathname === `${base}/docs/${doc.slug}`);
 </script>
 
 <li class="nav-item">
-	<a href="/docs/{doc.slug}" class="nav-link" class:active={isActive}>
+	<a href="{base}/docs/{doc.slug}" class="nav-link" class:active={isActive}>
 		{doc.metadata.title || doc.slug}
 	</a>
 </li>

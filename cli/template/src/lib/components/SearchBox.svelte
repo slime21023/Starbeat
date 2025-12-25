@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import Fuse from 'fuse.js';
 	import type { DocPost } from '$lib/utils/docs';
@@ -51,7 +52,7 @@
 	}
 
 	function navigateTo(doc: DocPost) {
-		goto(`/docs/${doc.slug}`);
+		goto(`${base}/docs/${doc.slug}`);
 		closeSearch();
 	}
 

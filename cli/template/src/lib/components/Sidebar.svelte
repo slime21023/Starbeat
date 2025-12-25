@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { groupDocs } from '$lib/utils/docs';
 	import type { DocPost } from '$lib/types';
 	import type { SiteConfig } from '$lib/utils/config';
@@ -13,7 +14,7 @@
 
 <div class="sidebar">
 	<div class="sidebar-header">
-		<a href="/" class="logo">
+		<a href="{base}/" class="logo">
 			<span class="logo-text">{config.logo}</span>
 		</a>
 		<ThemeToggle />

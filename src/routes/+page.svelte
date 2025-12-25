@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	let { data } = $props();
 </script>
 
@@ -7,7 +8,7 @@
 	<p class="subtitle">{data.config.description}</p>
 
 	<div class="actions">
-		<a href="/docs/getting-started" class="button primary">Get Started →</a>
+		<a href="{base}/docs/getting-started" class="button primary">Get Started →</a>
 		{#if data.config.github}
 			<a href={data.config.github} class="button secondary">View on GitHub</a>
 		{/if}
