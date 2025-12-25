@@ -1,0 +1,28 @@
+{
+  "name": "create-starbeat",
+  "version": "0.0.1",
+  "description": "Create a new Starbeat documentation site",
+  "type": "module",
+  "bin": {
+    "create-starbeat": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "template"
+  ],
+  "keywords": [
+    "create",
+    "starbeat",
+    "docs",
+    "documentation",
+    "svelte",
+    "sveltekit",
+    "markdown"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/starbeat"
+  }
+}

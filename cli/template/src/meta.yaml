@@ -1,0 +1,14 @@
+# Site Configuration
+# Edit this file to customize your documentation site
+
+# Basic Info
+title: My Documentation
+description: Documentation for my project
+logo: MyDocs
+
+# Links (optional)
+github: https://github.com
+
+# SEO (optional)
+# og_image: /og-image.png
+# twitter_handle: "@handle"

@@ -1,0 +1,253 @@
+/* Furo-Inspired Theme Variables */
+:root {
+	/* Typography */
+	--font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+	/* Layout */
+	--sidebar-width: 280px;
+	--header-height: 60px;
+	--content-max-width: 900px;
+
+	/* Transitions */
+	--transition-duration: 200ms;
+	--transition-timing: ease;
+
+	/* Focus States */
+	--focus-ring-color: var(--color-brand-primary);
+	--focus-ring-offset: 2px;
+	--focus-ring-width: 2px;
+
+	/* Legacy variable mappings for compatibility */
+	--font-body: var(--font-family-base);
+	--font-mono: var(--font-family-mono);
+	--bg-body: var(--color-background);
+	--bg-sidebar: var(--color-background-secondary);
+	--text-main: var(--color-foreground);
+	--text-muted: var(--color-foreground-muted);
+	--border-color: var(--color-border);
+	--accent: var(--color-brand-primary);
+	--accent-hover: var(--color-brand-hover);
+}
+
+/* Dark mode - default */
+:root {
+	--color-background: #131416;
+	--color-background-secondary: #1a1c1e;
+	--color-foreground: rgba(255, 255, 255, 0.85);
+	--color-foreground-muted: rgba(255, 255, 255, 0.7);
+	--color-foreground-subtle: rgba(255, 255, 255, 0.5);
+	--color-brand-primary: #82aaff;
+	--color-brand-hover: #a8c7ff;
+	--color-border: #303336;
+	--color-border-muted: #252729;
+	--color-code-background: #2d2d2d;
+	--color-code-block-background: #0d0d0d;
+}
+
+/* Light mode - manual override */
+:root[data-theme="light"] {
+	--color-background: #ffffff;
+	--color-background-secondary: #f8f9fb;
+	--color-foreground: #2d2d2d;
+	--color-foreground-muted: #646776;
+	--color-foreground-subtle: #9ca0a5;
+	--color-brand-primary: #2962ff;
+	--color-brand-hover: #0039cb;
+	--color-border: #e5e7eb;
+	--color-border-muted: #f0f0f0;
+	--color-code-background: #f5f5f5;
+	--color-code-block-background: #1e1e1e;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-family-base);
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+	font-size: 1rem;
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Headings */
+h1 {
+	font-size: 2.25rem;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	color: var(--color-foreground);
+}
+
+h2 {
+	font-size: 1.75rem;
+	font-weight: 600;
+	line-height: 1.3;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--color-border);
+	color: var(--color-foreground);
+}
+
+h3 {
+	font-size: 1.375rem;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+	color: var(--color-foreground);
+}
+
+h4 {
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-top: 1.25rem;
+	margin-bottom: 0.5rem;
+	color: var(--color-foreground);
+}
+
+/* Typography - Code Elements */
+code {
+	font-family: var(--font-family-mono);
+	font-size: 0.875em;
+	background-color: var(--color-code-background);
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
+	color: var(--color-foreground);
+}
+
+pre {
+	background-color: var(--color-code-block-background);
+	padding: 1rem 1.25rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin: 1.5rem 0;
+	line-height: 1.5;
+}
+
+pre code {
+	background: none;
+	padding: 0;
+	font-size: 0.875rem;
+	color: #e5e5e5;
+}
+
+/* Typography - Content Elements */
+p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	line-height: 1.65;
+}
+
+a {
+	color: var(--color-brand-primary);
+	text-decoration: none;
+	transition: color var(--transition-duration) var(--transition-timing);
+}
+
+a:hover {
+	color: var(--color-brand-hover);
+	text-decoration: underline;
+}
+
+a:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring-color);
+	outline-offset: var(--focus-ring-offset);
+	border-radius: 0.125rem;
+}
+
+ul, ol {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	padding-left: 1.5rem;
+}
+
+li {
+	margin-bottom: 0.5rem;
+	line-height: 1.65;
+}
+
+li > ul,
+li > ol {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+}
+
+blockquote {
+	margin: 1.5rem 0;
+	padding: 0.5rem 0 0.5rem 1.25rem;
+	border-left: 4px solid var(--color-brand-primary);
+	color: var(--color-foreground-muted);
+	font-style: italic;
+}
+
+blockquote p {
+	margin-bottom: 0;
+}
+
+blockquote p + p {
+	margin-top: 0.75rem;
+}
+
+/* Typography - Tables */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5rem 0;
+	font-size: 0.875rem;
+}
+
+thead {
+	border-bottom: 2px solid var(--color-border);
+}
+
+th {
+	text-align: left;
+	padding: 0.75rem 1rem;
+	font-weight: 600;
+	color: var(--color-foreground);
+}
+
+td {
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--color-border);
+	color: var(--color-foreground);
+}
+
+tbody tr:hover {
+	background-color: var(--color-background-secondary);
+}
+
+/* Interactive Elements - Buttons */
+button {
+	font-family: var(--font-family-base);
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: color var(--transition-duration) var(--transition-timing),
+		background-color var(--transition-duration) var(--transition-timing),
+		border-color var(--transition-duration) var(--transition-timing);
+}
+
+button:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring-color);
+	outline-offset: var(--focus-ring-offset);
+}
+
+/* Global focus-visible reset for better keyboard navigation */
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring-color);
+	outline-offset: var(--focus-ring-offset);
+}
