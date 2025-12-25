@@ -1,0 +1,14 @@
+# Site Configuration
+# Edit this file to customize your documentation site
+
+# Basic Info
+title: Starbeat Docs
+description: A minimalist documentation site generator built with Bun and Svelte
+logo: Starbeat
+
+# Links (optional)
+github: https://github.com
+
+# SEO (optional)
+# og_image: /og-image.png
+# twitter_handle: "@starbeat"

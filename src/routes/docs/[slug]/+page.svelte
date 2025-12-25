@@ -3,8 +3,7 @@
     let Content = $derived(data.component);
 </script>
 
-<div class="prose dark:prose-invert max-w-4xl mx-auto p-4">
-    <p class="text-xs text-gray-500">Debug: Doc Page Mounted</p>
+<div class="doc-content">
     {#if data.metadata.title}
         <h1>{data.metadata.title}</h1>
     {/if}
@@ -14,3 +13,11 @@
         <p>No content found.</p>
     {/if}
 </div>
+
+<style>
+    .doc-content {
+        max-width: var(--content-max-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
